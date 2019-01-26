@@ -3,6 +3,11 @@ Plantea una arquitectura cualquiera que brinde X servicio(s), ponle todo tipo de
 Móntalo en AWS y no toques el dashboard web más que para crearte la cuenta y las credenciales para las llamadas a la API.
 Escoge tu herramienta favorita (Terraform, Ansible, Chef, Puppet...) y describe toda tu infra cómo código.
 VPCs, subredes, grupos de seguridad, usuarios, balanceadores, bases de datos, VPNs, etc... TODO.
+
+Describe en infraestructura como código (IaC) el siguiente ejemplo del centro de arquitecturas de AWS para alojamiento de aplicaciones web ([PDF](https://media.amazonwebservices.com/architecturecenter/AWS_ac_ra_web_01.pdf) PDF).
+
+![arquitectura-alojamiento-aplicaciones-web](images/aws-web-hosting-architecture.png  "Arquitectura de Alojamiento de aplicaciones web")
+
 Disfruta de lo que se siente crearla y destruirla cuantas veces quieras. 🙃
 Luego con la infra creada, escoge tu gestor de configuración favorito (Ansible, Puppet, Chef, Salt...) y configura todos los servidores.
 Como lo harías a mano. Pero todo a golpe de gestor de configuración. O sea... no cambies un archivo de configuración a mano.
