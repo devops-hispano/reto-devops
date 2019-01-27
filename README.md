@@ -2,6 +2,7 @@
 
 1. Tener una cuenta en AWS. Si es la primera vez que usa AWS puede aprovechar la [capa gratuita](https://aws.amazon.com/es/free/) durante un año.
 2. Crear un par de claves de acceso (Programmatic access) que correspondan a un usuario con privilegios de Admin[¹] para poder crear recursos.
+3. Un dominio gratuito o de pago que te permita cambiar los NS autoritarios a los de AWS (para su uso con Route53)
 
 ## Infraestructura
 
@@ -12,16 +13,47 @@
 
 ![arquitectura-alojamiento-aplicaciones-web](images/aws-web-hosting-architecture.png  "Arquitectura de Alojamiento de aplicaciones web")
 
+**La arquitectura consiste en (para cada VPC):**
+1. Una zona en Route53 con los registros necesarios
+2. CDN (opcional)
+3. S3 para contendo estático y recursos (opcional)
+4. Balanceador de carga  (ELB) público
+5. Instancias de los servidores web
+6. Grupo de Autoescalamiento (ASG) de las instancias de los servidores web
+7. Bases de datos RDS (base de datos relacional) con máster y rpelica
+
+En el diagrama no se indica con número, pero se observa otro ASG para los servidores de aplicaciones al igual que un ELB interno. Puede crear estos o no. 
+
+Caso 1: **NO**,  en este caso, los servidores web (5) alojaran la apliación web y desde ellos se conectará a la BBDD RDS.
+Caso 2: **SI** en este caso, los servidores web actuarán como proxies reversos a los servidores de aplicaciones y estos últimos serán quienes se conecten a la BBDD. 
+
 Disfruta de lo que se siente crearla y destruirla cuantas veces quieras. 🙃
 
 ## Gestión de la configuración
-Luego con la infra creada, escoge tu gestor de configuración favorito (Ansible, Puppet, Chef, Salt...) y configura todos los servidores.
-Como lo harías a mano. Pero todo a golpe de gestor de configuración. O sea... no cambies un archivo de configuración a mano.
-Luego, reconfigurarlos muchas veces más.
+Luego con la infra creada, escoge tu gestor de configuración favorito (Ansible, Puppet, Chef, Salt...) y configura todos los servidores y las BBDD.
+
+Como lo harías a mano. Pero todo a golpe de gestor de configuración. O sea... no cambies un archivo de configuración a mano. Luego, reconfigurarlos muchas veces más.
+
+Una vez configurada la base del sistema, despliega de la misma forma automágica la aplicación web, puedes usar una simple aplicación web que tenga sólo parte front (no te conectarías a las BBDD) o usar dos applicaciones, una de front y otra de backend que se conectaría a la BBDD. 
+
+Se proponen los siguientes ejemplos:
+
+1. [Análisis de sentimiento](https://github.com/rinormaloku/k8s-mastery)  (Front + Back)
+2. [RealWorld](https://github.com/gothinkster/realworld)  (Front + Back)
+3. [Kotlin Full-stack Application Example](https://github.com/Kotlin/kotlin-fullstack-sample) (Front +  Back)
+4. Lectura Extra: [crear un servidor web para conectarse a la instancia de base de datos de Amazon RDS](https://docs.aws.amazon.com/es_es/AmazonRDS/latest/UserGuide/CHAP_Tutorials.WebServerDB.CreateWebServer.html) 
+
+#### Finaliza esta parte con el siguiente objetivo:
+
+Suponiendo que tu dominio es **dominio.tld**
+
+prod.dominio.tld mostraría la app del entorno de PROD
+staging.dominio.tld mostraría la app del entorno de STAGING
+dev.dominio.tld mostraría la app del entorno de DEV
 
 ## CI / CD
 
-Luego de eso diría que te pongas un pipeline en tu CI/CD favorito. Hazte una web app de prueba en un repo git. Y que tu pipeline compile si tiene que compilar, suba los artefactos al entorno de staging/pre, les haga pruebas y si las pasa que lo despliegue en el entorno de pro.
+Luego de eso diría que te pongas un pipeline en tu CI/CD favorito. Hazte una web app de prueba en un repo git. Y que tu pipeline compile si tiene que compilar, suba los artefactos al entorno de staging/pre, les haga +  pruebas y si las pasa que lo despliegue en el entorno de pro.
 
 Estos entornos podrían ser diferentes instancias  o diferentes VPCs en tu cuenta de AWS.
 
