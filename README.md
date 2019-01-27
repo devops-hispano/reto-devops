@@ -24,15 +24,15 @@ Cada ejercicio de este reto es libre de ser realizado con las herramientas que s
 
 ## Pre-requisitos
 
-1. Tener una cuenta en AWS. Si es la primera vez que usa AWS puede aprovechar la [capa gratuita](https://aws.amazon.com/es/free/) durante un año.
+1. Tener una cuenta en AWS. Si es la primera vez que usa AWS puede aprovechar la [capa gratuita][1] durante un año.
 2. Crear un par de claves de acceso (Programmatic access) que correspondan a un usuario con privilegios de Admin[¹] para poder crear recursos.
-3. Un dominio gratuito o de pago que te permita cambiar los NS autoritarios a los de AWS (para su uso con Route53)
+3. Un dominio gratuito o de pago que te permita cambiar los NS autoritarios a los de AWS (para su uso con [Route53][2])
 
 ## Infraestructura
 
-1. Escoge de las herramientas de aprovisionamiento de infraestructura del DevOps roadmap tu elegida, Terraform o Cloud Formation.
-2. Crea un nuevo proyecto y define tres entornos: DEV, STAGING, PROD, cada entorno tendrá los mismos componentes de la arquitectura elegida. Cada entorno se engloba dentro de un VPC
-3. Describe en infraestructura como código (IaC) lo necesario para crear desde cero y sin intervención manual la siguiente arquitectura propuesta: ([PDF](https://media.amazonwebservices.com/architecturecenter/AWS_ac_ra_web_01.pdf))
+1. Escoge alguna de las herramientas de aprovisionamiento de infraestructura del [DevOps Roadmap][3]. Por ejemplo: [Terraform][4] o [CloudFormation][5].
+2. Crea un nuevo proyecto y define tres entornos: DEV, STAGING y PROD. Cada entorno tendrá los mismos componentes de la arquitectura elegida. Cada entorno se engloba dentro de un VPC.
+3. Describe en infraestructura como código (IaC) lo necesario para crear desde cero y sin intervención manual la siguiente arquitectura propuesta: ([PDF][6])
 
 ![arquitectura-alojamiento-aplicaciones-web](images/aws-web-hosting-architecture.png  "Arquitectura de Alojamiento de aplicaciones web")
 
@@ -63,10 +63,10 @@ Una vez configurada la base del sistema, despliega de la misma forma automágica
 
 Se proponen los siguientes ejemplos:
 
-1. [Análisis de sentimiento](https://github.com/rinormaloku/k8s-mastery)  (Front + Back)
-2. [RealWorld](https://github.com/gothinkster/realworld)  (Front + Back)
-3. [Kotlin Full-stack Application Example](https://github.com/Kotlin/kotlin-fullstack-sample) (Front +  Back)
-4. Lectura Extra: [crear un servidor web para conectarse a la instancia de base de datos de Amazon RDS](https://docs.aws.amazon.com/es_es/AmazonRDS/latest/UserGuide/CHAP_Tutorials.WebServerDB.CreateWebServer.html)
+1. [Análisis de sentimiento][7]  (Front + Back)
+2. [RealWorld][8]  (Front + Back)
+3. [Kotlin Full-stack Application Example][9] (Front +  Back)
+4. Lectura Extra: [crear un servidor web para conectarse a la instancia de base de datos de Amazon RDS][10]
 
 **Finaliza esta parte con el siguiente objetivo:**
 
@@ -91,3 +91,14 @@ Luego de eso, me metería en el tema de contenedores, tanto montar la infra para
 ## Notas
 
 [¹]: Para iniciación rápida a _IaC_ esta es una forma de no tener problemas de permisos pero es una **MUY MALA** práctica. Las cuentas con _Programmatic access_ deben de tener permisos bien pensados. Un par de credenciales filtradas pueden resultar en una cuenta comprometida, destrucción de recursos y facturas sorpresas.
+
+[1]: https://aws.amazon.com/es/free/
+[2]: https://aws.amazon.com/es/route53/
+[3]: https://github.com/kamranahmedse/developer-roadmap#devops-roadmap
+[4]: https://www.terraform.io/
+[5]: https://aws.amazon.com/es/cloudformation/
+[6]: https://media.amazonwebservices.com/architecturecenter/AWS_ac_ra_web_01.pdf
+[7]: https://github.com/rinormaloku/k8s-mastery
+[8]: https://github.com/gothinkster/realworld
+[9]: https://github.com/Kotlin/kotlin-fullstack-sample
+[10]: https://docs.aws.amazon.com/es_es/AmazonRDS/latest/UserGuide/CHAP_Tutorials.WebServerDB.CreateWebServer.html
