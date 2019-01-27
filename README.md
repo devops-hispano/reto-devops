@@ -48,8 +48,8 @@ Cada ejercicio de este reto es libre de ser realizado con las herramientas que s
 
 En el diagrama no se indica con número, pero se observa otro ASG para los servidores de aplicaciones al igual que un ELB interno. Puede crear estos o no.
 
-Caso 1: **NO**,  en este caso, los servidores web (5) alojaran la apliación web y desde ellos se conectará a la BBDD RDS.
-Caso 2: **SI** en este caso, los servidores web actuarán como proxies reversos a los servidores de aplicaciones y estos últimos serán quienes se conecten a la BBDD.
+Si escoge crearlos: Los servidores web actuarán como proxies reversos a los servidores de aplicaciones y estos últimos serán quienes se conecten a la base de datos.
+Si escoge **NO** crearlos: Los servidores web (5) alojarán la aplicación web y desde ellos se conectará a la base de datos RDS.
 
 Disfruta de lo que se siente crearla y destruirla cuantas veces quieras. 🙃
 
