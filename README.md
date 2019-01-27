@@ -24,8 +24,8 @@
 
 En el diagrama no se indica con número, pero se observa otro ASG para los servidores de aplicaciones al igual que un ELB interno. Puede crear estos o no. 
 
-Caso 1: **NO**,  en este caso, los servidores web (5) alojaran la apliación web y desde ellos se conectará a la BBDD RDS.
-Caso 2: **SI** en este caso, los servidores web actuarán como proxies reversos a los servidores de aplicaciones y estos últimos serán quienes se conecten a la BBDD. 
+Caso 1: **NO**,  en este caso, los servidores web (5) alojaran la apliación web y desde ellos se conectará a la BBDD RDS.  
+Caso 2: **SI** en este caso, los servidores web actuarán como proxies reversos a los servidores de aplicaciones y estos últimos serán quienes se conecten a la BBDD.  
 
 Disfruta de lo que se siente crearla y destruirla cuantas veces quieras. 🙃
 
@@ -47,9 +47,9 @@ Se proponen los siguientes ejemplos:
 
 Suponiendo que tu dominio es **dominio.tld**
 
-prod.dominio.tld mostraría la app del entorno de PROD
-staging.dominio.tld mostraría la app del entorno de STAGING
-dev.dominio.tld mostraría la app del entorno de DEV
+prod.dominio.tld mostraría la app del entorno de PROD  
+staging.dominio.tld mostraría la app del entorno de STAGING  
+dev.dominio.tld mostraría la app del entorno de DEV  
 
 ## CI / CD
 
