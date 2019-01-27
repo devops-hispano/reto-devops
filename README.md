@@ -6,8 +6,8 @@
 - [Pre-requisitos](#pre-requisitos)
 - [Infraestructura](#infraestructura)
 - [Gestión de la configuración](#gestión-de-la-configuración)
-- [CI / CD](#ci--cd)
-- [Contenedores](#contenedores)
+- [CI / CD [TBD]](#ci--cd-tbd)
+- [Contenedores [TBD]](#contenedores-tbd)
 - [Notas](#notas)
 
 ---------------------------------------------------------------------
@@ -76,7 +76,7 @@ Suponiendo que tu dominio es **dominio.tld**:
 - staging.dominio.tld mostraría la app del entorno de STAGING
 - dev.dominio.tld mostraría la app del entorno de DEV
 
-## CI / CD
+## CI / CD [TBD]
 
 Luego de eso diría que te pongas un pipeline en tu CI/CD favorito. Hazte una web app de prueba en un repo git. Y que tu pipeline compile si tiene que compilar, suba los artefactos al entorno de staging/pre, les haga +  pruebas y si las pasa que lo despliegue en el entorno de pro.
 
@@ -84,7 +84,7 @@ Estos entornos podrían ser diferentes instancias  o diferentes VPCs en tu cuent
 
 Algo tan sencillo como un hello world, y probar que la llamada a la URL te devuelva eso. O un botón de X color. Lo que sea.
 
-## Contenedores
+## Contenedores [TBD]
 
 Luego de eso, me metería en el tema de contenedores, tanto montar la infra para contenedores como que tu CI/CD genere la imagen docker, la suba a un registry y tu orquestador de contenedores la despliegue.
 
