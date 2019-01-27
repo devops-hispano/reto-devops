@@ -31,22 +31,22 @@ Cada ejercicio de este reto es libre de ser realizado con las herramientas que s
 ## Infraestructura
 
 1. Escoge alguna de las herramientas de aprovisionamiento de infraestructura del [DevOps Roadmap][3]. Por ejemplo: [Terraform][4] o [CloudFormation][5].
-2. Crea un nuevo proyecto y define tres entornos: DEV, STAGING y PROD. Cada entorno tendrá los mismos componentes de la arquitectura elegida. Cada entorno se engloba dentro de un VPC.
+2. Crea un nuevo proyecto y define tres entornos: DEV, STAGING y PROD. Cada entorno tendrá los mismos componentes de la arquitectura elegida. Cada entorno se engloba dentro de un VPC y tendrá un subdominio propio.
 3. Describe en infraestructura como código (IaC) lo necesario para crear desde cero y sin intervención manual la siguiente arquitectura propuesta: ([PDF][6])
 
 ![arquitectura-alojamiento-aplicaciones-web](images/aws-web-hosting-architecture.png  "Arquitectura de Alojamiento de aplicaciones web")
 
 **La arquitectura consiste en (para cada VPC):**
 
-1. Una zona en Route53 con los registros necesarios
-2. CDN (opcional)
-3. S3 para contendo estático y recursos (opcional)
-4. Balanceador de carga  (ELB) público
-5. Instancias de los servidores web
-6. Grupo de Autoescalamiento (ASG) de las instancias de los servidores web
-7. Bases de datos RDS (base de datos relacional) con máster y rpelica
+1. Una zona en Route53 con los registros necesarios.
+2. CDN (opcional).
+3. S3 para contendo estático y recursos (opcional).
+4. Balanceador de carga (ELB) público.
+5. Instancias de los servidores web.
+6. Grupo de Autoescalamiento (ASG) de las instancias de los servidores web.
+7. Bases de datos RDS (base de datos relacional) con máster y réplica.
 
-En el diagrama no se indica con número, pero se observa otro ASG para los servidores de aplicaciones al igual que un ELB interno. Puede crear estos o no.
+En el diagrama no se indica con número, pero se observa otro ASG para los servidores de aplicaciones al igual que un ELB interno. Puede elegir crearlos o no.
 
 Si escoge crearlos: Los servidores web actuarán como proxies reversos a los servidores de aplicaciones y estos últimos serán quienes se conecten a la base de datos.
 Si escoge **NO** crearlos: Los servidores web (5) alojarán la aplicación web y desde ellos se conectará a la base de datos RDS.
@@ -55,18 +55,19 @@ Disfruta de lo que se siente crearla y destruirla cuantas veces quieras. 🙃
 
 ## Gestión de la configuración
 
-Luego con la infra creada, escoge tu gestor de configuración favorito (Ansible, Puppet, Chef, Salt...) y configura todos los servidores y las BBDD.
+Una vez la infraestructura está creada, escoge un gestor de configuración (Ansible, Puppet, Chef, Salt, etc) y crea los recursos necesarios para configurar todos los servidores y las BBDD.
 
-Como lo harías a mano. Pero todo a golpe de gestor de configuración. O sea... no cambies un archivo de configuración a mano. Luego, reconfigurarlos muchas veces más.
+El objetivo de este apartado es evitar tener que entrar a servidores a cambiar parámetros o ficheros de configuración así que evita cambios manuales. ¡Probablemente habrá alguna manera de hacerlo con la herramienta que has escogido!
 
-Una vez configurada la base del sistema, despliega de la misma forma automágica la aplicación web, puedes usar una simple aplicación web que tenga sólo parte front (no te conectarías a las BBDD) o usar dos applicaciones, una de front y otra de backend que se conectaría a la BBDD.
-
+Con los recursos base configurados, escoge una aplicación web para desplegar.
 Se proponen los siguientes ejemplos:
 
 1. [Análisis de sentimiento][7]  (Front + Back)
 2. [RealWorld][8]  (Front + Back)
 3. [Kotlin Full-stack Application Example][9] (Front +  Back)
 4. Lectura Extra: [crear un servidor web para conectarse a la instancia de base de datos de Amazon RDS][10]
+
+Ahora debe crear nuevos recursos para desplegar y configurar automáticamente la aplicación escogida. Una vez creados, aplicarlos junto con los creados anteriormente.
 
 **Finaliza esta parte con el siguiente objetivo:**
 
